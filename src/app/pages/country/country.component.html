@@ -1,29 +1,17 @@
-<div>
-  <div>
-    <div class="center">
-      <div>{{ titlePage }}</div>
-    </div>
-    <div class="split">
-      <div>
-        <p>Number of entries</p>
-        <p>{{ totalEntries }}</p>
-      </div>
-      <div>
-        <p>Total Number of medals</p>
-        <p>{{ totalMedals }}</p>
-      </div>
-      <div>
-        <p>Total Number of athletes</p>
-        <p>{{ totalAthletes }}</p>
-      </div>
-    </div>
-  </div>
-  <div class="chart-container wrapper-container">
+<app-header />
+<div class="country-page">
+  <figure class="chart-container wrapper-container">
     <div class="container">
-      <canvas id="countryChart">{{ lineChart }}</canvas>
-      <h2>Date</h2>
+      <canvas
+        id="countryChart"
+        aria-label="Line chart showing medals per year"
+        role="img"
+        >{{ lineChart }}</canvas
+      >
+      <figcaption class="sr-only">Medals per Olympic Games</figcaption>
     </div>
-  </div>
+  </figure>
+
   <div class="center">
     <a routerLink="">Go back</a>
   </div>

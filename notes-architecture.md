@@ -62,22 +62,13 @@ Certains éléments HTML ne sont pas utilisés de manière sémantique. Par exem
 │   │   ├── app.component.ts
 │   │   ├── app.module.ts
 │   │   ├── components
-│   │   │   ├── country-detail
-│   │   │   │   ├── country-detail.component.html
-│   │   │   │   ├── country-detail.component.scss
-│   │   │   │   ├── country-detail.component.spec.ts
-│   │   │   │   └── country-detail.component.ts
-│   │   │   ├── dashboard
-│   │   │   │   ├── dashboard.component.html
-│   │   │   │   ├── dashboard.component.scss
-│   │   │   │   ├── dashboard.component.spec.ts
-│   │   │   │   └── dashboard.component.ts
 │   │   │   └── header
 │   │   │       ├── header.component.html
 │   │   │       ├── header.component.scss
 │   │   │       ├── header.component.spec.ts
 │   │   │       └── header.component.ts
 │   │   ├── models
+│   │   │   ├── kpi.ts
 │   │   │   ├── olympic.ts
 │   │   │   └── participation.ts
 │   │   ├── pages
@@ -121,11 +112,9 @@ Certains éléments HTML ne sont pas utilisés de manière sémantique. Par exem
 
 Tout d'abord, je souhaite séparer clairement les différentes responsabilités au sein de l'application. En créant des dossiers distincts pour les composants, les services, les modèles et les pages, on facilite la navigation dans le projet et la maintenance du code.
 
-## Composants
+## Composant
 
-- `HeaderComponent` : Contiendra la barre de navigation et le logo.
-- `DashboardComponent` : Affichera les statistiques globales (total médailles, total athlètes).
-- `CountryDetailComponent` : Affichera les détails d'un pays spécifique (participations, médailles, etc.).
+- `HeaderComponent` : Contiendra l'information de la page principale, et sera utilisé dans toutes les pages pour afficher le titre de la page courante (nom du pays, etc.).
 
 ## Pages
 

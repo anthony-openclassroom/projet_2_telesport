@@ -1,20 +1,12 @@
-<h2>Olympic games app</h2>
-<hr/>
-<div>
-  <div>
-    <div class="center">
-      <div>{{ titlePage }}</div>
-    </div>
-    <div class="split">
-      <div>
-        <p>Number of countries</p>
-        <p>{{ totalCountries }}</p>
-      </div>
-      <div>
-        <p>Number of JOs</p>
-        <p>{{ totalJOs }}</p>
-      </div>
-    </div>
-  </div>
-  <canvas id="DashboardPieChart">{{ pieChart }}</canvas>
+<app-header />
+<div class="home-page">
+  <figure class="chart-container">
+    <canvas
+      id="DashboardPieChart"
+      aria-label="Pie chart showing medals distribution"
+      role="img"
+      >{{ pieChart }}</canvas
+    >
+    <figcaption class="sr-only">Distribution of Medals per Country</figcaption>
+  </figure>
 </div>
