@@ -20,6 +20,14 @@ Il n'y a aucune interface ou type défini pour les données récupérées de l'A
 
 Il y a plusieurs `console.log` dans le code qui sont probablement là pour le débogage. Ils doivent être supprimés pour éviter de polluer la console en production.
 
+## 5. Pas d'analyse de data
+
+## 6. Leak de memoire
+
+Chart & subscribe
+
+## 7. Semantique HTML
+
 ## 5. Plan d'action
 1. **Créer les interfaces** (`Olympic`, `Participation`) pour remplacer tous les `any`.
 2. **Créer `OlympicService`** et y déplacer les appels `http.get`.
