@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { Olympic } from 'src/app/models/olympic';
 import { OlympicService } from 'src/app/services/olympic.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +17,11 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private olympicService: OlympicService,
+    private dataService: DataService,
   ) {}
 
   ngOnInit() {
-    this.olympicService
+    this.dataService
       .getOlympicData()
       .pipe()
       .subscribe({
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit {
             ]);
 
             const sumOfAllMedalsYears = data.map((olympic) =>
-              this.olympicService.calculateTotalMedals(olympic.participations),
+              this.dataService.calculateTotalMedals(olympic.participations),
             );
 
             this.buildPieChart(countries, sumOfAllMedalsYears);

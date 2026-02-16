@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { OlympicService } from 'src/app/services/olympic.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-country',
@@ -16,12 +17,13 @@ export class CountryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private olympicService: OlympicService,
+    private dataService: DataService,
   ) {}
 
   ngOnInit() {
     const countryName = this.route.snapshot.paramMap.get('countryName');
     if (countryName) {
-      this.olympicService.getOlympicsByCountry(countryName).subscribe(
+      this.dataService.getOlympicsByCountry(countryName).subscribe(
         (country: any) => {
           if (country) {
             this.olympicService.updateHeaderData(country.country, [
