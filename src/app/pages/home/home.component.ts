@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
       .getOlympicData()
       .pipe()
       .subscribe({
+        // Ici, j'utilise la nouvelle syntaxe de souscription avec un objet pour gérer les cas de succès et d'erreur de manière plus claire.
         next: (data) => {
           if (data && data.length > 0) {
             const allYears = data.flatMap((olympic) =>
