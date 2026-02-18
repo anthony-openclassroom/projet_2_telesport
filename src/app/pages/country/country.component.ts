@@ -21,10 +21,10 @@ export class CountryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const countryName = this.route.snapshot.paramMap.get('countryName');
-    if (countryName) {
-      this.dataService.getOlympicsByCountry(countryName).subscribe(
-        (country: any) => {
+    const countryId = this.route.snapshot.paramMap.get('id');
+    if (countryId) {
+      this.dataService.getOlympicsByCountry(Number(countryId)).subscribe({
+        next: (country: any) => {
           if (country) {
             this.olympicService.updateHeaderData(country.country, [
               {
@@ -48,10 +48,10 @@ export class CountryComponent implements OnInit {
             this.router.navigateByUrl('not-found');
           }
         },
-        (error) => {
+        error: (error) => {
           this.error = error.message;
         },
-      );
+      });
     }
   }
 

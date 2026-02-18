@@ -17,11 +17,11 @@ export class DataService {
   }
 
   //   Méthode pour récupérer les données d'un pays spécifique et calculer les KPIs associés
-  getOlympicsByCountry(countryName: string): Observable<any> {
+  getOlympicsByCountry(countryId: number): Observable<any> {
     return this.getOlympicData().pipe(
       map((olympics: Olympic[]) => {
         const country = olympics.find(
-          (olympic: Olympic) => olympic.country === countryName,
+          (olympic: Olympic) => olympic.id === countryId,
         );
         if (country) {
           return {

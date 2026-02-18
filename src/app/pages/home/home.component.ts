@@ -45,7 +45,10 @@ export class HomeComponent implements OnInit {
               this.dataService.calculateTotalMedals(olympic.participations),
             );
 
-            this.buildPieChart(countries, sumOfAllMedalsYears);
+            // Création d'un tableau d'IDs synchronisé avec les données
+            const countryIds = data.map((olympic) => olympic.id);
+
+            this.buildPieChart(countries, sumOfAllMedalsYears, countryIds);
           }
         },
         error: (error) => {
@@ -55,7 +58,11 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  buildPieChart(countries: string[], sumOfAllMedalsYears: number[]) {
+  buildPieChart(
+    countries: string[],
+    sumOfAllMedalsYears: number[],
+    countryIds: number[],
+  ) {
     const pieChart = new Chart('DashboardPieChart', {
       type: 'pie',
       data: {
@@ -88,10 +95,9 @@ export class HomeComponent implements OnInit {
             );
             if (points.length) {
               const firstPoint = points[0];
-              const countryName = pieChart.data.labels
-                ? pieChart.data.labels[firstPoint.index]
-                : '';
-              this.router.navigate(['country', countryName]);
+              // On récupère l'ID grâce à l'index de l'élément cliqué
+              const countryId = countryIds[firstPoint.index];
+              this.router.navigate(['country', countryId]);
             }
           }
         },
