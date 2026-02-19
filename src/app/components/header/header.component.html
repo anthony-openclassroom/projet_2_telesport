@@ -1,12 +1,12 @@
-<div class="center">
-  <h2>{{ titlePage }}</h2>
-</div>
+<header>
+  <h1 class="center">{{ titlePage }}</h1>
 
-<!-- ici, j'utilise la condition if (directive structurelle) > 0 -->
-<div class="split" *ngIf="kpis.length > 0">
-  <!-- ensuite, je boucle avec un for sur mes KPIs -->
-  <div *ngFor="let kpi of kpis" class="stat-card">
-    <p class="stat-label">{{ kpi.label }}</p>
-    <p class="stat-value">{{ kpi.value }}</p>
+  <!-- ici, j'utilise la condition if (directive structurelle) > 0 -->
+  <div class="split" *ngIf="kpis.length > 0">
+    <!-- ensuite, je boucle avec un for sur mes KPIs -->
+    <div *ngFor="let kpi of kpis" class="stat-card">
+      <p class="stat-label">{{ kpi.label }}</p>
+      <p class="stat-value">{{ kpi.value }}</p>
+    </div>
   </div>
-</div>
+</header>

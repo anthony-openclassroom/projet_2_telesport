@@ -23,7 +23,7 @@ export class CountryComponent implements OnInit {
   ngOnInit() {
     const countryId = this.route.snapshot.paramMap.get('id');
     if (countryId) {
-      this.dataService.getOlympicsByCountry(Number(countryId)).subscribe({
+      this.dataService.getOlympicsByCountry(countryId).subscribe({
         next: (country: any) => {
           if (country) {
             this.olympicService.updateHeaderData(country.country, [

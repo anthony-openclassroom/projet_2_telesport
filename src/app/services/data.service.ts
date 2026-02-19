@@ -17,12 +17,21 @@ export class DataService {
   }
 
   //   Méthode pour récupérer les données d'un pays spécifique et calculer les KPIs associés
-  getOlympicsByCountry(countryId: number): Observable<any> {
+  getOlympicsByCountry(filter: string | number): Observable<any> {
     return this.getOlympicData().pipe(
       map((olympics: Olympic[]) => {
-        const country = olympics.find(
-          (olympic: Olympic) => olympic.id === countryId,
-        );
+        const country = olympics.find((olympic: Olympic) => {
+          if (typeof filter === 'number') {
+            return olympic.id === filter;
+          }
+          // Si c'est une chaîne qui ressemble à un nombre, on compare l'ID
+          if (!isNaN(Number(filter))) {
+            return olympic.id === Number(filter);
+          }
+          // Sinon, on compare le nom du pays (insensible à la casse par sécurité)
+          return olympic.country.toLowerCase() === filter.toLowerCase();
+        });
+
         if (country) {
           return {
             ...country,

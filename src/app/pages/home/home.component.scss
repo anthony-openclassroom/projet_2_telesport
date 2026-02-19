@@ -1,0 +1,21 @@
+.chart-container {
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  max-width: 800px;
+  height: 400px;
+}
+
+@media screen and (max-width: 1199px) {
+  .chart-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .chart-container {
+    width: 100%;
+    padding: 0 10px;
+    height: 350px;
+  }
+}
