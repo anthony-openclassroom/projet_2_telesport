@@ -8,7 +8,7 @@ L'application suit une structure modulaire standard Angular pour le dossier `src
 src/app/
 ├── components/          # Composants réutilisables (UI pure)
 │   └── header/          # En-tête dynamique (Titre + KPIs)
-│   └── models/          # Interfaces TypeScript (Olympic, Participation, KPI)
+├── models/              # Interfaces TypeScript (Olympic, Participation, KPI)
 ├── pages/               # Pages principales (Vues routées)
 │   ├── home/            # Tableau de bord principal
 │   ├── country/         # Vue détaillée par pays
@@ -34,7 +34,7 @@ Ces composants sont liés aux routes et orchestrent l'affichage.
   - Met à jour le titre et les KPIs globaux via `OlympicService`.
   - Gère la navigation vers les pages de détail.
 
-- **CountryComponent** (`/country/:countryName`) :
+- **CountryComponent** (`/country/:id`) :
   - Affiche les détails d'un pays spécifique (Line Chart).
   - Récupère les données filtrées via `DataService`.
   - Met à jour le titre (Nom du pays) et les KPIs spécifiques (Total athlètes, médailles) via `OlympicService`.
