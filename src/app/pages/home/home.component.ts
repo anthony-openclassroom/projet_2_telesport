@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { Router } from '@angular/router';
 import Chart, { ArcElement } from 'chart.js/auto';
 import { Olympic } from 'src/app/models/olympic';
 import { OlympicService } from 'src/app/services/olympic.service';
 import { DataService } from 'src/app/services/data.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { DataService } from 'src/app/services/data.service';
 export class HomeComponent implements OnInit {
   public pieChart!: Chart<'pie', number[], string>;
   public error!: string;
+  private destroyRef = inject(DestroyRef);
 
   constructor(
     private router: Router,
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.dataService
       .getOlympicData()
-      .pipe()
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         // Ici, j'utilise la nouvelle syntaxe de souscription avec un objet pour gérer les cas de succès et d'erreur de manière plus claire.
         next: (data) => {
