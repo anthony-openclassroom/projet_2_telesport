@@ -168,7 +168,21 @@ export class HomeComponent implements OnInit {
                   const isRightSide = Math.cos(angle) >= 0;
 
                   // On fixe une distance constante par rapport au centre pour aligner les textes verticalement
-                  const alignOffset = outerRadius + 60; // Rayon + marge
+                  // Réduction de l'offset pour éviter que le texte sorte de l'écran sur mobile
+                  const mobileOffset = chartWidth < 400 ? 15 : 60;
+                  // Si mobile, on s'assure de laisser de la place pour le texte (environ 80px)
+                  // chartWidth / 2 est le centre. On veut que la ligne s'arrête avant le bord.
+                  const maxDistFromCenter =
+                    chartWidth < 400
+                      ? chartWidth / 2 - 80
+                      : chartWidth / 2 - 10;
+
+                  const alignOffset = Math.min(
+                    outerRadius + mobileOffset,
+                    maxDistFromCenter,
+                  );
+
+                  // Calcul des coordonnées de la fin de la ligne
                   const xLineEnd = isRightSide
                     ? center.x + alignOffset
                     : center.x - alignOffset;
