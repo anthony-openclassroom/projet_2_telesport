@@ -15,12 +15,9 @@ export class HomeComponent implements OnInit {
   public pieChart!: Chart<'pie', number[], string>;
   public error!: string;
   private destroyRef = inject(DestroyRef);
-
-  constructor(
-    private router: Router,
-    private olympicService: OlympicService,
-    private dataService: DataService,
-  ) {}
+  private router = inject(Router);
+  private olympicService = inject(OlympicService);
+  private dataService = inject(DataService);
 
   ngOnInit() {
     this.dataService

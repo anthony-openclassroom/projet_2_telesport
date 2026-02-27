@@ -14,13 +14,10 @@ export class CountryComponent implements OnInit {
   public lineChart!: Chart;
   public error!: string;
   private destroyRef = inject(DestroyRef);
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private olympicService: OlympicService,
-    private dataService: DataService,
-  ) {}
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private olympicService = inject(OlympicService);
+  private dataService = inject(DataService);
 
   ngOnInit() {
     const countryId = this.route.snapshot.paramMap.get('id');

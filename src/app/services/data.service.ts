@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Olympic } from '../models/olympic';
@@ -8,9 +8,10 @@ import { Olympic } from '../models/olympic';
   providedIn: 'root',
 })
 export class DataService {
+  private http = inject(HttpClient);
   private olympicUrl = './assets/mock/olympic.json';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getOlympicData(): Observable<Olympic[]> {
     return this.http.get<Olympic[]>(this.olympicUrl);
