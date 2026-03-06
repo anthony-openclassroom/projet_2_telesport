@@ -1,5 +1,9 @@
 <app-header />
 <div class="home-page">
+  <p *ngIf="error" class="error-message" role="alert">
+    An error occurred while loading data: {{ error }}
+  </p>
+
   <figure class="chart-container">
     <canvas
       id="DashboardPieChart"

@@ -6,8 +6,20 @@
   height: 400px;
 }
 
+.error-message {
+  width: 60%;
+  margin: 0 auto 16px;
+  color: #b42318;
+  font-weight: 500;
+  text-align: center;
+}
+
 @media screen and (max-width: 1199px) {
   .chart-container {
+    width: 80%;
+  }
+
+  .error-message {
     width: 80%;
   }
 }
@@ -17,5 +29,10 @@
     width: 100%;
     padding: 0 10px;
     height: 350px;
+  }
+
+  .error-message {
+    width: 100%;
+    padding: 0 10px;
   }
 }
