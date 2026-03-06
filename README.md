@@ -97,4 +97,4 @@ L'application ne possède pas de backend réel pour ce prototype. Les données s
 - **Données statiques :** Les données étant issues d'un fichier JSON local, aucune modification (CRUD) n'est persistée.
 - **Pas d'authentification :** L'application est accessible publiquement sans connexion.
 - **Backend :** L'absence de véritable API Backend limite les fonctionnalités temps réel ou dynamiques complexes.
-- **Tests :** Les tests unitaires et d'intégration ne sont pas encore implémentés, ce qui peut affecter la maintenabilité à long terme.
+- **Tests :** Les tests unitaires et d'intégration sont limités, principalement axés sur les composants et services clés.

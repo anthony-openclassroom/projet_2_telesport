@@ -2,9 +2,9 @@
 
 Ce que j'ai pu anaylser comme étant les éléments à améliorer dans le projet, classés par ordre de priorité. Ces points sont basés sur les meilleures pratiques Angular et les principes de développement logiciel.
 
-## 1. HttpClient utilisé directement dans les composants
+## 1. HttpClient utilisait directement dans les composants
 
-Le service `HttpClient` est utilisé directement dans les composants (`HomeComponent` et `CountryComponent`) pour faire des appels HTTP.
+Le service `HttpClient` utilisait directement dans les composants (`HomeComponent` et `CountryComponent`) pour faire des appels HTTP.
 
 ## 2. Code dupliqué et "Hardcoded"
 
@@ -31,6 +31,8 @@ Il n'y a pas de gestion des abonnements aux observables. Si les composants sont 
 ## 7. Semantique HTML
 
 Certains éléments HTML ne sont pas utilisés de manière sémantique. Par exemple, les titres devraient être dans des balises `<h1>`, `<h2>`, etc., pour améliorer l'accessibilité et le SEO.
+
+EX : Voir le lien suivant => [/src/app/pages/home/home.component.html](./src/app/pages/home/home.component.html) et remplacer les `<div>` par des balises plus appropriées.
 
 ## 8. Plan d'action
 
