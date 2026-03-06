@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Olympic } from '../models/olympic';
+import { Olympic, OlympicCountryStats } from '../models/olympic';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,9 @@ export class DataService {
   }
 
   //   Méthode pour récupérer les données d'un pays spécifique et calculer les KPIs associés
-  getOlympicsByCountry(filter: string | number): Observable<any> {
+  getOlympicsByCountry(
+    filter: string | number,
+  ): Observable<OlympicCountryStats | undefined> {
     return this.getOlympicData().pipe(
       map((olympics: Olympic[]) => {
         const country = olympics.find((olympic: Olympic) => {

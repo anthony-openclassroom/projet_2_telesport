@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { OlympicService } from 'src/app/services/olympic.service';
 import { DataService } from 'src/app/services/data.service';
+import { OlympicCountryStats } from 'src/app/models/olympic';
+import { Participation } from 'src/app/models/participation';
 
 @Component({
   selector: 'app-country',
@@ -26,7 +28,7 @@ export class CountryComponent implements OnInit {
         .getOlympicsByCountry(countryId)
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
-          next: (country: any) => {
+          next: (country: OlympicCountryStats | undefined) => {
             if (country) {
               this.olympicService.updateHeaderData(country.country, [
                 {
@@ -40,9 +42,11 @@ export class CountryComponent implements OnInit {
                 },
               ]);
 
-              const years = country.participations.map((p: any) => p.year);
-              const medals = country.participations.map((p: any) =>
-                p.medalsCount.toString(),
+              const years = country.participations.map(
+                (p: Participation) => p.year,
+              );
+              const medals = country.participations.map(
+                (p: Participation) => p.medalsCount,
               );
 
               this.buildChart(years, medals);
@@ -57,7 +61,7 @@ export class CountryComponent implements OnInit {
     }
   }
 
-  buildChart(years: number[], medals: string[]) {
+  buildChart(years: number[], medals: number[]) {
     const lineChart = new Chart('countryChart', {
       type: 'line',
       data: {
@@ -65,7 +69,7 @@ export class CountryComponent implements OnInit {
         datasets: [
           {
             label: 'medals',
-            data: medals.map((m) => parseInt(m)),
+            data: medals,
             backgroundColor: '#0b868f',
           },
         ],
