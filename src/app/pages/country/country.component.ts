@@ -6,6 +6,7 @@ import { OlympicService } from 'src/app/services/olympic.service';
 import { DataService } from 'src/app/services/data.service';
 import { OlympicCountryStats } from 'src/app/models/olympic';
 import { Participation } from 'src/app/models/participation';
+import { APP_ROUTES } from 'src/app/app-routes';
 
 @Component({
   selector: 'app-country',
@@ -51,7 +52,7 @@ export class CountryComponent implements OnInit {
 
               this.buildChart(years, medals);
             } else {
-              this.router.navigateByUrl('not-found');
+              this.router.navigateByUrl(`/${APP_ROUTES.NOT_FOUND}`);
             }
           },
           error: (error) => {
