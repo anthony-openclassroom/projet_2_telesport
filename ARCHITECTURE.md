@@ -1,28 +1,23 @@
 # Architecture du Projet Olympic Games
 
-## 1. Arborescence des Dossiers
+## 1. Schéma d'architecture
 
-L'application suit une structure modulaire standard Angular pour le dossier `src/app` :
+Le schéma ci-dessous présente les blocs fonctionnels de l'application et leurs relations.
 
-```
-src/app/
-├── components/          # Composants réutilisables (UI pure)
-│   └── header/          # En-tête dynamique (Titre + KPIs)
-├── models/              # Interfaces TypeScript (Olympic, Participation, KPI)
-├── pages/               # Pages principales (Vues routées)
-│   ├── home/            # Tableau de bord principal
-│   ├── country/         # Vue détaillée par pays
-│   └── not-found/       # Page 404
-├── services/            # Logique métier et gestion d'état
-│   ├── data.service.ts  # Accès aux données et calculs métier
-│   └── olympic.service.ts # Gestion de l'état de l'UI (Header)
-├── app-routing.module.ts # Configuration des routes
-└── app.module.ts        # Module racine
-```
+![Schéma d'architecture de l'application Olympic Games](./docs/architecture-diagram.svg)
 
-> **Note**: Les modèles de données (`Olympic`, `Participation`) sont définis pour garantir un typage strict dans toute l'application.
+Source draw.io : [`docs/architecture-diagram.drawio`](./docs/architecture-diagram.drawio)
 
-## 2. Rôles des Composants
+## 2. Lecture du schéma
+
+- `AppRoutingModule` gère la navigation entre `HomeComponent`, `CountryComponent` et `NotFoundComponent`.
+- `HomeComponent` et `CountryComponent` incluent le composant partagé `HeaderComponent`.
+- Les pages consomment `DataService` pour charger les données depuis `olympic.json`.
+- `DataService` s'appuie sur les modèles `Olympic` et `Participation` pour typer et transformer les données.
+- `HomeComponent` et `CountryComponent` mettent à jour `OlympicService`, qui centralise le titre et les KPIs affichés dans le header.
+- `HeaderComponent` s'abonne à `OlympicService`, qui s'appuie sur le modèle `KPI`.
+
+## 3. Rôles des composants
 
 ### Pages
 
@@ -32,12 +27,14 @@ Ces composants sont liés aux routes et orchestrent l'affichage.
   - Affiche le graphique principal (Pie Chart).
   - Récupère les données via `DataService`.
   - Met à jour le titre et les KPIs globaux via `OlympicService`.
-  - Gère la navigation vers les pages de détail.
+  - Inclut `HeaderComponent`.
+  - Gère la navigation vers la page de détail d'un pays.
 
 - **CountryComponent** (`/country/:id`) :
   - Affiche les détails d'un pays spécifique (Line Chart).
   - Récupère les données filtrées via `DataService`.
   - Met à jour le titre (Nom du pays) et les KPIs spécifiques (Total athlètes, médailles) via `OlympicService`.
+  - Inclut `HeaderComponent`.
   - Gère le bouton "Retour".
 
 - **NotFoundComponent** (`**`) :
@@ -46,13 +43,11 @@ Ces composants sont liés aux routes et orchestrent l'affichage.
 ### Composants UI
 
 - **HeaderComponent** :
-  - Composant partagé affiché au-dessus du `router-outlet`.
+  - Composant partagé utilisé dans `HomeComponent` et `CountryComponent`.
   - N'a **aucune logique métier**.
-  - S'abonne à `OlympicService` pour afficher dynamiquement :
-    - Le titre de la page courante.
-    - Les indicateurs clés (Number of JOs, Total Medals, etc.).
+  - S'abonne à `OlympicService` pour afficher dynamiquement le titre courant et les indicateurs clés.
 
-## 3. Services et Gestion des Données
+## 4. Services et gestion des données
 
 L'architecture sépare clairement la **logique de données** de la **logique d'affichage**.
 
@@ -76,7 +71,7 @@ Ce service gère l'état volatil de l'interface utilisateur.
   1. `HomeComponent` se charge → appelle `olympicService.updateHeaderData(...)`.
   2. `HeaderComponent` détecte le changement via une souscription et met à jour l'affichage.
 
-## 4. Préparation à une future API Back-end
+## 5. Préparation à une future API Back-end
 
 Cette architecture a été conçue pour faciliter la transition d'un fichier JSON local vers une véritable API REST :
 

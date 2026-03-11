@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="26.0.14">
+  <diagram id="olympic-architecture" name="Architecture">
+    <mxGraphModel dx="2951" dy="825" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e3" value="route vers la page" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="routing" target="notfound" edge="1">
+          <mxGeometry x="0.6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fUK602KQpMPC5SDRcnhu-3" value="route vers la page" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="routing" target="home">
+          <mxGeometry x="0.6732" relative="1" as="geometry">
+            <mxPoint x="740" y="210" as="sourcePoint" />
+            <mxPoint x="605" y="290" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="title" value="Architecture de l&#39;application Olympic Games" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="470" y="20" width="520" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="routing" value="AppRoutingModule&#xa;Route &#39;/&#39; -&gt; Home&#xa;Route &#39;/country/:id&#39; -&gt; Country&#xa;Route &#39;**&#39; -&gt; NotFound" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="250" y="90" width="420" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="notfound" value="NotFoundComponent&#xa;Page 404" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="830" y="280" width="250" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="dataService" value="DataService&#xa;Charge et transforme les donnees&#xa;getOlympicData() / getOlympicsByCountry()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="-80" y="450" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="models" value="Modeles TypeScript" style="swimlane;html=1;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;startSize=30;" parent="1" vertex="1">
+          <mxGeometry x="870" y="540" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="fUK602KQpMPC5SDRcnhu-1" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;Olympic&lt;/span&gt;&lt;br style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;Participation&lt;/span&gt;&lt;br style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;KPI&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="models">
+          <mxGeometry x="65" y="60" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="json" value="olympic.json&#xa;Source de donnees locale" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e6f7ff;strokeColor=#0099cc;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="-80" y="760" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="home" target="header" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="328" />
+              <mxPoint x="250" y="478" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="country" target="header" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" target="olympicService" edge="1">
+          <mxGeometry x="0.2205" y="25" relative="1" as="geometry">
+            <mxPoint x="-40" y="351.25" as="sourcePoint" />
+            <mxPoint x="385" y="603.75" as="targetPoint" />
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="country" target="olympicService" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="328" />
+              <mxPoint x="430" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="consomme title$ / kpis$" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="header" target="olympicService" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="charge les donnees" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="home" target="dataService" edge="1">
+          <mxGeometry x="0.122" y="55" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="country" target="dataService" edge="1">
+          <mxGeometry x="0.2615" y="35" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="lit le fichier JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="dataService" target="json" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="s&#39;appuie sur Olympic / Participation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="dataService" edge="1">
+          <mxGeometry x="-0.2455" relative="1" as="geometry">
+            <mxPoint x="360" y="670" as="sourcePoint" />
+            <mxPoint x="860" y="670" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="108" y="670" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="s&#39;appuie sur KPI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;" parent="1" source="olympicService" target="models" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="600" />
+              <mxPoint x="790" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;fontSize=12;" parent="1" source="home" target="country" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;fontSize=12;" parent="1" source="country" target="home" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fUK602KQpMPC5SDRcnhu-4" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;navigation vers /country/:id et /dashboard&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e15">
+          <mxGeometry x="0.0206" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="country" value="CountryComponent&#xa;Page detail pays&#xa;Line chart + retour Home" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="510" y="280" width="250" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="home" value="HomeComponent&#xa;Page dashboard&#xa;Pie chart + navigation vers Country" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="-80" y="280" width="250" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="header" value="HeaderComponent&#xa;Composant partage&#xa;Affiche titre + KPIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="470" y="430" width="250" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="olympicService" value="OlympicService&#xa;Etat UI du header&#xa;BehaviorSubject title$ / kpis$" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="470" y="580" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="fUK602KQpMPC5SDRcnhu-5" value="route vers la page" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="routing" target="country">
+          <mxGeometry x="0.6732" relative="1" as="geometry">
+            <mxPoint x="470" y="210" as="sourcePoint" />
+            <mxPoint x="55" y="290" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
